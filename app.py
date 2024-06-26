@@ -13,11 +13,6 @@ class Book(db.Model):
     author = Column(String(80), nullable=False)
     year = Column(Integer, nullable=False)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-    add_initial_data()
-
 def add_initial_data():
     if Book.query.count() == 0:
         initial_book = Book(title="1984", author="George Orwell", year=1949)
@@ -64,4 +59,7 @@ def delete_book(id):
     return jsonify({'message': 'Book deleted successfully'})
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+        add_initial_data()
     app.run(host='0.0.0.0', port=5000)
