@@ -1,7 +1,7 @@
 # Flask Book API DEV Container Modul 169 BBZBL-IT
 
 This project is a Flask-based REST API for managing a collection of books. It supports operations to create, read, update, and delete books stored in a SQLite database. The application is containerized using Docker.
-
+Flask web application that manages a collection of books. The application is containerized using Docker, which allows us to package the application and its dependencies into a single image that can run anywhere. We want to make sure that an initial book is added to our collection when the application starts.
 ## Table of Contents
 
 1. [Requirements](#requirements)
