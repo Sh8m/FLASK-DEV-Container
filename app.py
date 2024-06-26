@@ -16,6 +16,13 @@ class Book(db.Model):
 @app.before_first_request
 def create_tables():
     db.create_all()
+    add_initial_data()
+
+def add_initial_data():
+    if Book.query.count() == 0:
+        initial_book = Book(title="1984", author="George Orwell", year=1949)
+        db.session.add(initial_book)
+        db.session.commit()
 
 @app.route('/books', methods=['POST'])
 def add_book():
