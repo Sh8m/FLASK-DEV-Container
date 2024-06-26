@@ -163,13 +163,12 @@ docker ps
 1. **Get Container ID: `sh`**
 ```
 docker ps
-
 ```
 
 2. **Check the logs: `sh`**
+3. 
 ```
 docker logs <container_id>
-
 ```
 
 ### Ensure Flask App is Listening on All Interfaces
