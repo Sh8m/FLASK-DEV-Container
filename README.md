@@ -232,4 +232,9 @@ curl http://<container_ip>:5000/books
 - RUN pip install --no-cache-dir -r requirements.txt: Install the dependencies listed in requirements.txt.
 - EXPOSE 5000: Expose port 5000 to the host.
 - CMD ["python", "app.py"]: Run app.py when the container launches.
--
+
+
+
+### This Version of the docker Comes with an Initial Test book file
+
+
