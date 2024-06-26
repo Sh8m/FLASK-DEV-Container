@@ -214,7 +214,8 @@ Then use the IP address to access the application:
 curl http://<container_ip>:5000/books
 
 ```
-
+```
+```
 ## Explanation
 ### Flask Application
 
