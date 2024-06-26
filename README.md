@@ -167,7 +167,6 @@ docker ps
 
 2. **Check the logs: `sh`**
 
-3. 
 ```
 docker logs <container_id>
 ```
