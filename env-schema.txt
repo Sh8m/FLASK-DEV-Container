@@ -1,0 +1,3 @@
+# .env file structure
+DATABASE_URL= # URL for the database connection
+SECRET_KEY= # Secret key for Flask application
