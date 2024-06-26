@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=sqlite:///./test.db
+  db:
+    image: nouchka/sqlite3
+    volumes:
+      - data_volume:/db
+volumes:
+  data_volume:

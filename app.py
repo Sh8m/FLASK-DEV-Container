@@ -1,27 +1,3 @@
-# Flask Book API
-
-This project is a Flask-based REST API for managing a collection of books. It supports operations to create, read, update, and delete books stored in a SQLite database. The application is containerized using Docker.
-
-## Table of Contents
-
-1. [Requirements](#requirements)
-2. [Setup and Running](#setup-and-running)
-3. [API Endpoints](#api-endpoints)
-4. [Troubleshooting](#troubleshooting)
-5. [Explanation](#explanation)
-
-## Requirements
-
-- Docker
-- curl (for testing endpoints)
-
-## Setup and Running
-
-### Step 1: Create the Application Files
-
-1. **Create the Python script: `app.py`**
-
-``` python
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String
@@ -82,28 +58,3 @@ def delete_book(id):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
- ```
-
-
-2. **Create the Dockerfile: `Dockerfile`**
-
-```
-# Use the official Python image from the Docker Hub
-FROM python:3.9-slim
-
-# Set the working directory
-WORKDIR /app
-
-# Copy the current directory contents into the container at /app
-COPY . /app
-
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose port 5000
-EXPOSE 5000
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
-```
-
