@@ -237,4 +237,7 @@ curl http://<container_ip>:5000/books
 
 ### This Version of the docker Comes with an Initial Test book file
 
+# Flask Book API
+
+[![Open in Dev Container](https://img.shields.io/badge/open%20in-dev%20container-blue?logo=visual-studio-code)](vscode://vscode-remote/cloneInVolume?url=https://github.com/Sh8m/FLASK-DEV-Container)
 
