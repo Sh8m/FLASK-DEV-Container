@@ -107,3 +107,129 @@ EXPOSE 5000
 CMD ["python", "app.py"]
 ```
 
+3. **Create the requierements: `requirements.txt`**
+```
+flask
+flask_sqlalchemy
+
+```
+
+### Step 2: Build and run the Docker Container
+
+
+1. **Build the Docker image: `sh`**
+Open a terminal, navigate to the directory containing your files, and run the following command:
+```docker build -t flask-book-api .
+```
+
+2. **Run the Docker Container: `sh`**
+
+```
+docker run -p 5000:5000 flask-book-api
+```
+
+### Step 3: Test the API
+Use a tool like Postman or curl to interact with the API. For example, to add a new book:
+
+```
+curl -X POST http://localhost:5000/books -H "Content-Type: application/json" -d '{"title": "1984", "author": "George Orwell", "year": 1949}'
+
+```
+To get all books
+
+```
+
+curl http://localhost:5000/books
+
+```
+### API Endpoints
+
+    ** POST /books: Add a new book.
+    ** GET /books: Get a list of all books.
+    ** GET /books/int:id: Get a single book by ID.
+    ** PUT /books/int:id: Update a book by ID.
+    ** DELETE /books/int:id: Delete a book by ID.
+
+### Troubleshooting
+
+1. **List running containers: `sh`**
+```
+docker ps
+
+```
+### Check Docker Container Logs
+
+
+1. **Get Container ID: `sh`**
+```
+docker ps
+
+```
+
+2. **Check the logs: `sh`**
+```
+docker logs <container_id>
+
+```
+
+### Ensure Flask App is Listening on All Interfaces
+
+Ensure your Flask application is set to listen on all network interfaces. This is already done in the provided script with app.run(host='0.0.0.0', port=5000).
+
+### Rebuild and Run the Container
+Sometimes it helps to rebuild the Docker image and run the container again to ensure everything is correctly set up.
+
+1. **Rebuild the Docker image: `sh`**
+
+```docker build -t flask-book-api .
+```
+
+2. **Run the Docker Container: `sh`**
+
+```
+docker run -p 5000:5000 flask-book-api
+```
+
+### Access the Application
+After ensuring the container is running and there are no errors in the logs, try accessing the application again.
+
+1. **Access the Application: `sh`**
+```
+ curl http://localhost:5000/books
+```
+
+### Network Troubleshooting
+
+1. **Check Docker network settings:**
+Make sure Docker is set up to allow network traffic between your host and the container.
+
+2. **Use Docker’s internal IP address:**
+Sometimes using localhost might not work as expected. You can find the container's IP address and try accessing it directly.
+
+```
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id>
+
+```
+Then use the IP address to access the application:
+```
+curl http://<container_ip>:5000/books
+
+```
+
+## Explanation
+### Flask Application
+
+- Flask: A micro web framework for Python.
+- Flask_SQLAlchemy: An extension for Flask that adds support for SQLAlchemy, an ORM (Object Relational Mapping) tool.
+
+### Docker
+- Docker: A platform for developing, shipping, and running applications inside containers.
+
+### Dockerfile
+- FROM python:3.9-slim: Use the official Python 3.9 slim image as the base image.
+- WORKDIR /app: Set the working directory inside the container to /app.
+- COPY . /app: Copy the current directory contents into the container at /app.
+- RUN pip install --no-cache-dir -r requirements.txt: Install the dependencies listed in requirements.txt.
+- EXPOSE 5000: Expose port 5000 to the host.
+- CMD ["python", "app.py"]: Run app.py when the container launches.
+-
