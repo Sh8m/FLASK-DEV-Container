@@ -111,7 +111,6 @@ CMD ["python", "app.py"]
 ```
 flask
 flask_sqlalchemy
-
 ```
 
 ### Step 2: Build and run the Docker Container
@@ -119,7 +118,9 @@ flask_sqlalchemy
 
 1. **Build the Docker image: `sh`**
 Open a terminal, navigate to the directory containing your files, and run the following command:
-```docker build -t flask-book-api .
+
+```
+docker build -t flask-book-api .
 ```
 
 2. **Run the Docker Container: `sh`**
@@ -150,12 +151,11 @@ curl http://localhost:5000/books
     ** PUT /books/int:id: Update a book by ID.
     ** DELETE /books/int:id: Delete a book by ID.
 
-### Troubleshooting
+### Troubleshooting
 
 1. **List running containers: `sh`**
 ```
 docker ps
-
 ```
 ### Check Docker Container Logs
 
@@ -166,6 +166,7 @@ docker ps
 ```
 
 2. **Check the logs: `sh`**
+
 3. 
 ```
 docker logs <container_id>
@@ -180,7 +181,8 @@ Sometimes it helps to rebuild the Docker image and run the container again to en
 
 1. **Rebuild the Docker image: `sh`**
 
-```docker build -t flask-book-api .
+```
+docker build -t flask-book-api .
 ```
 
 2. **Run the Docker Container: `sh`**
@@ -207,14 +209,11 @@ Sometimes using localhost might not work as expected. You can find the container
 
 ```
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id>
-
 ```
 Then use the IP address to access the application:
 ```
 curl http://<container_ip>:5000/books
 
-```
-```
 ```
 ## Explanation
 ### Flask Application
